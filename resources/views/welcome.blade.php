@@ -19,30 +19,40 @@
                     A combination of hands-on infrastructure operations, with knowledge in cloud solutions and deep configurations management delivering massive end-to-end optimizations architectures.
                 </p>
                 <footer class="mt-10 flex flex-wrap gap-4">
-                    <a href="{{ route('contact') }}" class="px-8 py-4 rounded-xl bg-blue-900 hover:bg-blue-800 text-white font-bold text-base shadow-lg transition-all transform hover:-translate-y-0.5">Contact Me</a>
-                    <a href="{{ route('projects') }}" class="px-8 py-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-base border border-slate-200 transition-all transform hover:-translate-y-0.5">View Portfolio</a>
+                    <a href="https://drive.google.com/file/d/1jeKsAguTe3LM6D43tcFqkn_yVcC1DUEv/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-xl bg-blue-900 hover:bg-blue-800 text-white font-bold text-base shadow-lg transition-all transform hover:-translate-y-0.5"> CV Saya </a>
+                    <!-- Tombol View Portfolio -->
+                    <a href="{{ route('projects') }}" class="px-8 py-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-base border border-slate-200 transition-all transform hover:-translate-y-0.5"> View Portfolio</a>
                 </footer>
             </article>
 
-            <!-- Right Visual Component (Mockup Server Graphic) -->
+            <!-- Right Visual Component (Foto Profil & Bio Singkat) -->
             <article class="md:col-span-2 bg-slate-50/50 rounded-3xl border border-slate-200/80 shadow-2xs overflow-hidden flex flex-col justify-between min-h-[340px] group hover:shadow-md transition-all duration-300">
-                <!-- Menggunakan <figure> semantik murni untuk membungkus gambar ilustrasi tanpa pelapis DIV -->
-                <figure class="h-60 bg-blue-950/5 relative overflow-hidden m-0 flex items-center justify-center border-b border-slate-100">
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" 
-                        alt="Datacenter Cloud Infrastructure Architecture" 
-                        class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500">
+    
+                <!-- Bagian Foto Profil Placeholder -->
+                <figure class="h-72 bg-slate-100 relative overflow-hidden m-0 flex items-center justify-center border-b border-slate-100">
+                    <img src="{{ asset('images/munzir-photo.jpeg') }}" 
+                         alt="Foto Munzir Tamam" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <span class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-xs border border-slate-200 text-[10px] font-bold text-slate-700 rounded-md uppercase tracking-wider">
-                        Infrastructure Layout
+                        Profile Overview
                     </span>
                 </figure>
-                
-                <footer class="p-6 pt-4 flex justify-between items-center text-sm font-bold bg-white">
-                    <span class="text-slate-400 uppercase tracking-wider text-xs">Architecture & IaC</span>
+
+                <!-- Bagian Penjelasan Singkat (Bio & Peran) -->
+                <div class="p-6 pb-4 bg-white">
+                    <h3 class="text-xl font-bold text-slate-900">Munzir Tamam</h3>
+                    <p class="mt-2 text-sm text-slate-500 leading-relaxed"> Professional System Engineer and IT Graduate from Brawijaya University, focused on infrastructure reliability and system efficiency. </p>
+                </div>
+
+                <!-- Footer Status -->
+                <footer class="px-6 pb-6 pt-2 flex justify-between items-center text-sm font-bold bg-white">
+                    <span class="text-slate-400 uppercase tracking-wider text-xs">Professional & Educator</span>
                     <span class="text-emerald-600 flex items-center gap-1.5">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        FULLY UP TIME
+                        ACTIVE
                     </span>
                 </footer>
+
             </article>
 
         </div>
@@ -163,22 +173,29 @@
                         <span>Systems Tech</span> <span class="text-blue-600 text-sm">→</span>
                     </footer>
                 </li>
-                <!-- Project 2 -->
-                <li class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-2xs flex flex-col justify-between group hover:shadow-md transition-shadow">
-                    <article>
-                        <figure class="h-48 bg-slate-900 m-0 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600" alt="Telemetry Matrix" class="w-full h-full object-cover opacity-70">
-                            <span class="absolute top-4 left-4 px-2.5 py-1 bg-white/90 border border-slate-200 text-[10px] font-bold text-slate-700 rounded uppercase tracking-wider">ACTIVE</span>
-                        </figure>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Integrated Monitoring Systems</h3>
-                            <p class="mt-2 text-sm text-slate-500 leading-relaxed">Real-time networking validation and cluster hardware health telemetry monitoring core matrix implementations.</p>
-                        </div>
-                    </article>
-                    <footer class="p-6 pt-0 border-t border-slate-50 mt-4 flex justify-between items-center text-xs font-bold text-slate-400">
-                        <span>Data Analysis</span> <span class="text-blue-600 text-sm">→</span>
-                    </footer>
+
+                <!-- Project 2: Integrated Monitoring Systems (Dapat diklik menuju route detail) -->
+                <li class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-2xs group hover:shadow-md transition-shadow">
+                    <a href="{{ route('projects.monitoring') }}" class="flex flex-col justify-between h-full">
+                        <article>
+                            <figure class="h-48 bg-slate-900 m-0 relative overflow-hidden">
+                                <img src="{{ asset('images/prtg-eri.jpg') }}" alt="Integrated Monitoring Systems" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-4 left-4 px-2.5 py-1 bg-emerald-500 text-white text-[10px] font-bold rounded uppercase tracking-wider shadow-xs">ACTIVE PRODUCTION</span>
+                            </figure>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors flex items-center justify-between">
+                                    <span>Integrated Monitoring Systems</span>
+                                </h3>
+                                <p class="mt-2 text-sm text-slate-500 leading-relaxed">Real-time networking validation and cluster hardware health telemetry monitoring core matrix implementations (PRTG & Grafana).</p>
+                            </div>
+                        </article>
+                        <footer class="p-6 pt-0 border-t border-slate-50 mt-4 flex justify-between items-center text-xs font-bold text-slate-400">
+                            <span>Enterprise Telemetry</span> 
+                            <span class="text-blue-600 font-bold group-hover:translate-x-1 transition-transform flex items-center gap-1">View Case Study &rarr;</span>
+                        </footer>
+                    </a>
                 </li>
+
                 <!-- Project 3 -->
                 <li class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-2xs flex flex-col justify-between group hover:shadow-md transition-shadow">
                     <article>
@@ -212,21 +229,22 @@
                 </address>
             </article>
 
-            <form action="#" method="POST" class="bg-slate-50/70 p-8 rounded-2xl border border-slate-200/80 shadow-2xs space-y-5">
+            <!-- Form Kontak Terhubung dengan Route POST /contact -->
+            <form action="{{ route('contact') }}" method="POST" class="bg-slate-50/70 p-8 rounded-2xl border border-slate-200/80 shadow-2xs space-y-5">
                 @csrf
                 <p class="flex flex-col space-y-1.5">
                     <label for="name" class="text-xs font-bold text-slate-400 uppercase tracking-wide">Full Name</label>
-                    <input type="text" id="name" required placeholder="Enter your name" class="w-full text-base px-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-hidden focus:border-blue-600 transition-all">
+                    <input type="text" id="name" name="name" required placeholder="Enter your name" class="w-full text-base px-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-hidden focus:border-blue-600 transition-all">
                 </p>
                 <p class="flex flex-col space-y-1.5">
                     <label for="email" class="text-xs font-bold text-slate-400 uppercase tracking-wide">Email Address</label>
-                    <input type="email" id="email" required placeholder="munzirt07@gmail.com" class="w-full text-base px-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-hidden focus:border-blue-600 transition-all">
+                    <input type="email" id="email" name="email" required placeholder="munzirt07@gmail.com" class="w-full text-base px-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-hidden focus:border-blue-600 transition-all">
                 </p>
                 <p class="flex flex-col space-y-1.5">
                     <label for="message" class="text-xs font-bold text-slate-400 uppercase tracking-wide">Message</label>
-                    <textarea id="message" rows="4" required placeholder="How can I help you?" class="w-full text-base px-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-hidden focus:border-blue-600 transition-all resize-none"></textarea>
+                    <textarea id="message" name="message" rows="4" required placeholder="How can I help you?" class="w-full text-base px-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-hidden focus:border-blue-600 transition-all resize-none"></textarea>
                 </p>
-                <button type="submit" class="w-full py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold text-sm rounded-xl uppercase tracking-wider cursor-pointer">Send Message</button>
+                <button type="submit" class="w-full py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold text-sm rounded-xl uppercase tracking-wider cursor-pointer transition-colors">Send Message</button>
             </form>
 
         </div>

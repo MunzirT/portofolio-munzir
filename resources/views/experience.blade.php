@@ -9,7 +9,7 @@
                 Professional Overview
             </span>
             <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                Engineering Robust Systems &<br> Infrastructure.
+                Building Reliable Systems & <br>Infrastructure.
             </h1>
             <p class="mt-6 text-xl sm:text-2xl text-slate-500 max-w-5xl leading-relaxed">
                 Dedicated System Engineer with extensive expertise in baremetal orchestration, virtualization technologies, and large-scale infrastructure optimization for mission-critical environments.
@@ -43,15 +43,15 @@
                         <ul class="mt-6 space-y-4 text-lg text-slate-600 font-medium">
                             <li class="flex items-start gap-3">
                                 <span class="text-blue-600 mt-0.5" aria-hidden="true">🔹</span>
-                                <span>Orchestrated over 50+ baremetal nodes using automated pre-provisioning tools, reducing deployment times by 70%.</span>
+                                <span>Architected and integrated end-to-end IT infrastructure (servers, switches, and routers), provisioning 20+ VMs across VMware and Proxmox VE.</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <span class="text-blue-600 mt-0.5" aria-hidden="true">🔹</span>
-                                <span>Maintained high-availability Proxmox VE clusters managing 200+ virtualized production instances.</span>
+                                <span>Deployed multi-platform monitoring stack (PRTG, Zabbix, and Grafana), including dedicated PRTG setup for the ERI, E-AVIS, ETLE KORLANTAS POLRI system.</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <span class="text-blue-600 mt-0.5" aria-hidden="true">🔹</span>
-                                <span>Optimized storage throughput by 45% through custom NVMe-over-Fabrics implementation.</span>
+                                <span>Configured and integrated middleware/API solutions to ensure seamless communication and data flows across systems.</span>
                             </li>
                         </ul>
                         

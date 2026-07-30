@@ -1,0 +1,250 @@
+@extends('layouts.app')
+
+@section('content')
+<main class="bg-slate-50/50 min-h-screen pt-28 pb-20 px-4 sm:px-8">
+    <article class="max-w-6xl mx-auto">
+        
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-6 uppercase tracking-wider">
+            <a href="{{ route('projects') }}" class="hover:text-blue-600 transition-colors">Projects</a>
+            <span aria-hidden="true">&gt;</span>
+            <span class="text-slate-700">Integrated Monitoring Systems</span>
+        </nav>
+
+        <!-- Main Header -->
+        <header class="mb-10">
+            <p class="flex items-center gap-3 mb-3">
+                <span class="px-3 py-1 bg-emerald-100 text-emerald-700 font-bold text-xs rounded-full uppercase tracking-wider">ACTIVE PRODUCTION</span>
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Enterprise Network & Telemetry</span>
+            </p>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+                Integrated Monitoring Systems
+            </h1>
+            <p class="mt-4 text-slate-600 text-lg leading-relaxed max-w-3xl">
+                Arsitektur pemantauan telemetri terpadu skala besar untuk mengawal ketersediaan infrastruktur nasional, mencakup ERI Korlantas, analitik EAVIS, site ETLE terdistribusi, serta kesehatan cluster server secara real-time.
+            </p>
+        </header>
+
+        <!-- Interactive Image Gallery Slider (Fix Alpine.js & Blade Syntax) -->
+        <section x-data="{ 
+            active: 0, 
+            slides: [
+                { 
+                    img: '{{ asset("images/munzir-photo.jpeg") }}', 
+                    title: 'System Engineer Lead - Munzir Tamam', 
+                    desc: 'Penanggung jawab operasional & implementasi arsitektur jaringan terpadu.' 
+                },
+                { 
+                    img: '{{ asset("images/munzir-photo.jpeg") }}', 
+                    title: 'PRTG Core & Probe - ERI Korlantas Overview', 
+                    desc: 'Monitoring lalu lintas jaringan, bandwidth trunk Telkom, dan status node ERI Korlantas.' 
+                },
+                { 
+                    img: '{{ asset("images/munzir-photo.jpeg") }}', 
+                    title: 'EAVIS System & Analytics Health Verification', 
+                    desc: 'Telemetri kesehatan hardware, penggunaan resource CPU/RAM, dan verifikasi konektivitas EAVIS.' 
+                },
+                { 
+                    img: '{{ asset("images/munzir-photo.jpeg") }}', 
+                    title: 'ETLE Site & Network Telemetry Control', 
+                    desc: 'Monitoring ketersediaan koneksi, status sensor, dan kontrol perangkat keras site ETLE.' 
+                },
+                { 
+                    img: '{{ asset("images/munzir-photo.jpeg") }}', 
+                    title: 'Grafana Cluster Performance Matrix', 
+                    desc: 'Visualisasi metrik mendalam (Disk I/O, LVM storage, thermal, dan load average) server.' 
+                }
+            ],
+            next() { this.active = (this.active + 1) % this.slides.length },
+            prev() { this.active = (this.active - 1 + this.slides.length) % this.slides.length }
+        }" class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch mb-16 select-none">
+            
+            <!-- Main Active Image Container (Col 8) -->
+            <figure class="md:col-span-8 relative h-[380px] sm:h-[480px] bg-slate-900 rounded-3xl overflow-hidden shadow-sm border border-slate-200/80 group m-0">
+                <template x-for="(slide, index) in slides" :key="index">
+                    <section x-show="active === index" 
+                             x-transition:enter="transition ease-out duration-300 transform"
+                             x-transition:enter-start="opacity-0 scale-95"
+                             x-transition:enter-end="opacity-100 scale-100"
+                             class="absolute inset-0 w-full h-full">
+                        <img :src="slide.img" :alt="slide.title" class="w-full h-full object-cover">
+                        <!-- Caption Overlay -->
+                        <figcaption class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent p-6 text-white z-10">
+                            <span class="text-xs font-bold uppercase tracking-wider text-blue-400" x-text="`0${index + 1} / 0${slides.length}`"></span>
+                            <h3 class="text-xl font-bold mt-1" x-text="slide.title"></h3>
+                            <p class="text-xs text-slate-300 mt-1 leading-relaxed" x-text="slide.desc"></p>
+                        </figcaption>
+                    </section>
+                </template>
+
+                <!-- Tombol Navigasi Kiri (Prev) -->
+                <button @click="prev()" aria-label="Previous Slide" class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md flex items-center justify-center font-bold text-lg transition-transform hover:scale-105 cursor-pointer z-20">
+                    &#8249;
+                </button>
+            </figure>
+
+            <!-- Preview Gambar Berikutnya / Tombol Next (Col 4) -->
+            <figure @click="next()" class="hidden md:block md:col-span-4 relative h-[480px] bg-slate-900 rounded-3xl overflow-hidden shadow-sm border border-slate-200/80 cursor-pointer group m-0">
+                <img :src="slides[(active + 1) % slides.length].img" alt="Next preview" class="w-full h-full object-cover opacity-75 group-hover:scale-105 transition-all duration-500">
+                <span class="absolute inset-0 bg-slate-950/30 group-hover:bg-slate-950/10 transition-colors"></span>
+                
+                <!-- Panah Melayang Kanan (Next) -->
+                <button aria-label="Next Slide" class="absolute right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md flex items-center justify-center font-bold text-lg transition-transform group-hover:scale-110 z-20">
+                    &#8250;
+                </button>
+                
+                <figcaption class="absolute bottom-6 left-6 right-6 z-10">
+                    <span class="px-3 py-1.5 bg-slate-900/80 backdrop-blur-md text-white text-xs font-semibold rounded-lg inline-block mb-2">
+                        Berikutnya &rarr;
+                    </span>
+                    <h4 class="text-sm font-bold text-white line-clamp-1" x-text="slides[(active + 1) % slides.length].title"></h4>
+                </figcaption>
+            </figure>
+
+        </section>
+        
+
+        <!-- Content Details Grid -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+            
+            <!-- Main Details Area (Span 2) -->
+            <section class="lg:col-span-2 space-y-10">
+                
+                <!-- Project Overview & System Scope -->
+                <article class="space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
+                        <span class="w-8 h-1 bg-blue-600 rounded-full inline-block" aria-hidden="true"></span>
+                        Project Overview
+                    </h2>
+                    <section class="prose prose-slate max-w-none text-slate-600 leading-relaxed text-base space-y-4">
+                        <p>
+                            Inisiatif ini berfokus pada perancangan dan penyebaran sistem pemantauan telemetri tingkat lanjut untuk menangani infrastruktur jaringan dan server berskala besar. Sistem dirancang untuk mengantisipasi potensi <em>downtime</em> melalui deteksi dini anomalies pada traffic jaringan, kapasitas penyimpanan LVM, hingga kesehatan fisik server.
+                        </p>
+                        <p>
+                            Integrasi utama bertumpu pada gabungan <strong>Paessler PRTG Network Monitor (Core & Remote Probe)</strong> untuk pemantauan ribuan sensor terdistribusi, serta <strong>Grafana</strong> untuk visualisasi metrik eksekutif. Sistem ini melingkupi pemantauan operasional pada beberapa sistem utama:
+                        </p>
+                        <ul class="list-disc pl-5 space-y-2 font-medium text-slate-700">
+                            <li><strong>ERI (Electronic Registration and Identification) Korlantas:</strong> Pemantauan ketersediaan node, latency, dan throughput interface jaringan pusat & daerah.</li>
+                            <li><strong>EAVIS & ETLE Infrastructure:</strong> Monitoring real-time untuk status konektivitas perangkat flashlamp, kontroler site, dan verifikasi alur data secara terdistribusi.</li>
+                            <li><strong>Cluster & Baremetal Server Health:</strong> Telemetri resource fisik (CPU, RAM, RAID / SSD DWPD endurance status, thermal sensor) berbasis SNMP v3 & Node Exporter.</li>
+                        </ul>
+                    </section>
+                </article>
+
+                <!-- Key Implementation Highlights -->
+                <article class="space-y-4 pt-4">
+                    <h3 class="text-xl font-bold text-slate-900">Key Implementation Highlights</h3>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 list-none p-0">
+                        <li class="p-5 bg-white rounded-2xl border border-slate-200/80 shadow-2xs">
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">📡 Multi-Probe PRTG Deployment</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Konfigurasi PRTG Core dan Remote Probe tersentralisasi untuk mengakomodasi pemantauan 5,000+ hingga 10,000+ sensor aktif secara efisien tanpa membebani core engine.</p>
+                        </li>
+                        <li class="p-5 bg-white rounded-2xl border border-slate-200/80 shadow-2xs">
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">📊 Grafana Executive Dashboard</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Transformasi log dan metrik mentah menjadi visualisasi tingkat tinggi yang mudah dibaca oleh tim teknis maupun manajemen puncak.</p>
+                        </li>
+                        <li class="p-5 bg-white rounded-2xl border border-slate-200/80 shadow-2xs">
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">⚙️ Custom Telemetry & Alerts</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Sistem peringatan otomatis melalui pemicu ambang batas (*threshold*) untuk mencegah kegagalan node sebelum berdampak pada layanan publik.</p>
+                        </li>
+                        <li class="p-5 bg-white rounded-2xl border border-slate-200/80 shadow-2xs">
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">🔐 Air-Gapped & Secure Setup</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Prosedur instalasi dan pengiriman paket terisolasi (via Secure Copy/SCP) pada lingkungan jaringan dengan tingkat keandalan dan keamanan tinggi.</p>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Bottom Metrics & Environment Cards -->
+                <section class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                    <!-- Metrics Card -->
+                    <article class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-2xs">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2 mb-4">
+                            <span aria-hidden="true">📊</span> Scale & Metrics
+                        </h3>
+                        <dl class="space-y-3 text-xs font-bold">
+                            <div class="flex justify-between border-b border-slate-100 pb-2">
+                                <dt class="text-slate-500">ACTIVE PRTG SENSORS</dt>
+                                <dd class="text-slate-900 font-extrabold">5,000+ Sensors</dd>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-100 pb-2">
+                                <dt class="text-slate-500">POLLING INTERVAL</dt>
+                                <dd class="text-slate-900 font-extrabold">&lt; 60 Seconds</dd>
+                            </div>
+                            <div class="flex justify-between">
+                                <dt class="text-slate-500">SYSTEM AVAILABILITY</dt>
+                                <dd class="text-emerald-600 font-extrabold">99.9% High Reliability</dd>
+                            </div>
+                        </dl>
+                    </article>
+
+                    <!-- Environment Card -->
+                    <article class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-2xs">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2 mb-4">
+                            <span aria-hidden="true">&lt;&gt;</span> Core Environment
+                        </h3>
+                        <ul class="flex flex-wrap gap-2 list-none p-0">
+                            <li class="px-2.5 py-1 bg-slate-100 border border-slate-200 text-slate-700 rounded-md text-xs font-bold">Linux Debian / Ubuntu</li>
+                            <li class="px-2.5 py-1 bg-slate-100 border border-slate-200 text-slate-700 rounded-md text-xs font-bold">Paessler PRTG Core</li>
+                            <li class="px-2.5 py-1 bg-slate-100 border border-slate-200 text-slate-700 rounded-md text-xs font-bold">Grafana Dashboard</li>
+                            <li class="px-2.5 py-1 bg-slate-100 border border-slate-200 text-slate-700 rounded-md text-xs font-bold">SNMP v2c / v3</li>
+                            <li class="px-2.5 py-1 bg-slate-100 border border-slate-200 text-slate-700 rounded-md text-xs font-bold">Prometheus / Exporters</li>
+                        </ul>
+                    </article>
+                </section>
+
+            </section>
+
+            <!-- Right Sidebar: Technical Specifications -->
+            <aside class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-2xs space-y-6 lg:sticky lg:top-28">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    Technical Specifications
+                </h3>
+
+                <section class="space-y-2">
+                    <h4 class="text-xs font-bold text-slate-900">Monitoring Engine</h4>
+                    <ul class="flex flex-wrap gap-1.5 list-none p-0">
+                        <li class="px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold rounded">Paessler PRTG Core</li>
+                        <li class="px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold rounded">PRTG Remote Probe</li>
+                    </ul>
+                </section>
+
+                <section class="space-y-2">
+                    <h4 class="text-xs font-bold text-slate-900">Data Visualization</h4>
+                    <ul class="flex flex-wrap gap-1.5 list-none p-0">
+                        <li class="px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold rounded">Grafana</li>
+                        <li class="px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold rounded">Custom PRTG Maps</li>
+                    </ul>
+                </section>
+
+                <section class="space-y-2">
+                    <h4 class="text-xs font-bold text-slate-900">Target Ecosystems</h4>
+                    <ul class="flex flex-wrap gap-1.5 list-none p-0">
+                        <li class="px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold rounded">ERI Korlantas</li>
+                        <li class="px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold rounded">EAVIS Analytics</li>
+                        <li class="px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold rounded">ETLE Distributed Sites</li>
+                        <li class="px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold rounded">Telkom Trunks</li>
+                    </ul>
+                </section>
+
+                <section class="space-y-2">
+                    <h4 class="text-xs font-bold text-slate-900">Protocols & Standards</h4>
+                    <ul class="flex flex-wrap gap-1.5 list-none p-0">
+                        <li class="px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold rounded">SNMP v2c/v3</li>
+                        <li class="px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold rounded">ICMP Ping</li>
+                        <li class="px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold rounded">REST API</li>
+                        <li class="px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold rounded">Syslog</li>
+                    </ul>
+                </section>
+
+                <hr class="border-slate-100">
+
+                <a href="mailto:munzirt07@gmail.com" class="w-full py-3.5 px-4 rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors">
+                    <span aria-hidden="true">✉️</span> Inquire Technical Architecture
+                </a>
+            </aside>
+
+        </section>
+
+    </article>
+</main>
+@endsection

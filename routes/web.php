@@ -25,8 +25,12 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+// 2. PROJECTS ROUTE (GET)
+Route::get('/projects/integrated-monitoring', function () {
+    return view('projects.monitoring');
+})->name('projects.monitoring');
 
-// 2. CONTACT FORM PROCESSING ROUTE (POST)
+// 3. CONTACT FORM PROCESSING ROUTE (POST)
 Route::post('/contact', function (Request $request) {
     // Validasi input form dari user secara ketat
     $data = $request->validate([
