@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Munzir Tamam - Professional System Engineer</title>
+    <script type="module" src="http://[::1]:5173/@vite/client"></script><link rel="stylesheet" href="http://[::1]:5173/resources/css/app.css" /><script type="module" src="http://[::1]:5173/resources/js/app.js"></script>
+    <!-- Alpine.js (Wajib untuk slider & komponen interaktif) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
+
+    <header id="main-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-2xs">
+        
+        <nav class="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between h-20 transition-all duration-300" id="main-nav" aria-label="Main Navigation">
+            
+            <a href="https://localhost" class="text-2xl font-bold tracking-tight text-slate-900">
+                Munzir<span class="text-blue-600">.</span>
+            </a>
+            
+            <ul class="hidden md:flex items-center space-x-10 text-base font-bold text-slate-600">
+                <li><a href="https://localhost" class="hover:text-slate-900 transition-colors">Home</a></li>
+                <li><a href="https://localhost/experience" class="hover:text-slate-900 transition-colors">Experience</a></li>
+                <li><a href="https://localhost/skills" class="hover:text-slate-900 transition-colors">Skills</a></li>
+                <li><a href="https://localhost/projects" class="hover:text-slate-900 transition-colors">Projects</a></li>
+                <li><a href="https://localhost/contact" class="hover:text-slate-900 transition-colors">Contact</a></li>
+            </ul>
+            
+            <div class="hidden md:block">
+                <a href="https://localhost/contact" class="px-6 py-3 rounded-xl text-sm font-bold bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/20 transition-all">
+                    Hire Me
+                </a>
+            </div>
+
+            <button id="menu-toggle" class="md:hidden p-2 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 font-bold cursor-pointer">
+                ☰
+            </button>
+            
+        </nav>
+
+        <menu id="mobile-menu" class="hidden max-w-7xl mx-auto px-4 sm:px-8 pb-6 flex flex-col space-y-4 text-base font-bold text-slate-700 border-t border-slate-100 pt-4 md:hidden">
+            <li><a href="https://localhost" class="">Home</a></li>
+            <li><a href="https://localhost/experience" class="">Experience</a></li>
+            <li><a href="https://localhost/skills" class="">Skills</a></li>
+            <li><a href="https://localhost/projects" class="">Projects</a></li>
+            <li><a href="https://localhost/contact" class="">Contact</a></li>
+            <li class="pt-2">
+                <a href="https://localhost/contact" class="block text-center w-full py-3 rounded-xl bg-blue-600 text-white">Hire Me</a>
+            </li>
+        </menu>
+
+    </header>
+
+    <main class="pt-24 min-h-[calc(100vh-10rem)]">
+        <main class="max-w-7xl mx-auto px-4 sm:px-8 py-10">
+
+    <!-- Tombol Kembali -->
+    <nav aria-label="Breadcrumb" class="mb-8">
+        <a href="https://localhost" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
+            &larr; Back to Overview
+        </a>
+    </nav>
+
+    <!-- Header Proyek KSEMA -->
+    <header class="mb-10 pb-8 border-b border-slate-200">
+        <p class="flex items-center gap-3 mb-3">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700 uppercase tracking-wider">DEPLOYED</span>
+            <span class="text-sm font-semibold text-slate-500">Systems Tech</span>
+        </p>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            PIC off KSEMA Security System Architecture
+        </h1>
+        <p class="mt-2 text-lg text-slate-600 max-w-3xl">
+            Infrastructure provisioning and server designed for high-availability enterprise environments.
+        </p>
+    </header>
+
+    <!-- Layout Grid Utama -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+
+        <!-- Kolom Kiri: Image Slider Alpine.js & Overview (Span 2) -->
+        <article class="lg:col-span-2 space-y-8">
+            
+            <!-- Slider Alpine.js -->
+            <figure x-data="{ 
+                activeSlide: 0,
+                slides: [
+                    { 
+                        image: 'https://localhost/images/KSEMA-1.jpg', 
+                        title: 'KSEMA Infrastructure Overview', 
+                        desc: 'System architecture and core deployment configuration.' 
+                    },
+                    { 
+                        image: 'https://localhost/images/KSEMA-2.jpg', 
+                        title: 'Network & Cluster Topology', 
+                        desc: 'High-availability nodes and automated resource management.' 
+                    }
+                ],
+                next() { this.activeSlide = (this.activeSlide === this.slides.length - 1) ? 0 : this.activeSlide + 1; },
+                prev() { this.activeSlide = (this.activeSlide === 0) ? this.slides.length - 1 : this.activeSlide - 1; }
+            }" class="bg-white rounded-2xl shadow-xl shadow-slate-200/60 border border-slate-200/80 overflow-hidden m-0">
+                
+                <section class="relative aspect-video bg-slate-900 overflow-hidden">
+                    <template x-for="(slide, index) in slides" :key="index">
+                        <article x-show="activeSlide === index" 
+                                 x-transition:enter="transition opacity duration-300 ease-out"
+                                 class="absolute inset-0">
+                            <img :src="slide.image" :alt="slide.title" class="w-full h-full object-cover">
+                            <figcaption class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-slate-950/80 to-transparent text-white">
+                                <h3 class="text-xl font-bold" x-text="slide.title"></h3>
+                                <p class="text-sm text-slate-300 mt-1" x-text="slide.desc"></p>
+                            </figcaption>
+                        </article>
+                    </template>
+
+                    <button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white transition-all">❮</button>
+                    <button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white transition-all">❯</button>
+                </section>
+
+                <footer class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-500">
+                    <span x-text="`Image ${activeSlide + 1} of ${slides.length}`"></span>
+                </footer>
+            </figure>
+
+            <!-- Deskripsi Detail Proyek -->
+            <section class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-xs space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900">Project Overview</h2>
+                <p class="text-slate-600 leading-relaxed">
+                    Perancangan dan pengelolaan infrastruktur KSEMA difokuskan pada keandalan sistem, optimasi alokasi resource server, serta kemudahan manajemen operasi harian.
+                </p>
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-slate-100">
+                    <article class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                        <h4 class="font-bold text-slate-900 text-sm">System Operations</h4>
+                        <p class="text-xs text-slate-500 mt-1">Infrastructure Provisioning, Network Routing, & Monitoring</p>
+                    </article>
+                    <article class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                        <h4 class="font-bold text-slate-900 text-sm">Target Infrastructure</h4>
+                        <p class="text-xs text-slate-500 mt-1">Enterprise Servers, Linux Operating Systems, Network Trunks</p>
+                    </article>
+                </section>
+            </section>
+        </article>
+
+        <!-- Kolom Kanan: Technologies & Capabilities (Span 1) -->
+        <aside class="space-y-8 lg:sticky lg:top-28">
+            <section class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs space-y-6">
+                <h3 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-4">Technologies Used</h3>
+                <ul class="flex flex-wrap gap-2 list-none p-0">
+                    <li class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Linux Debian/Ubuntu</li>
+                    <li class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Networking & Routing</li>
+                    <li class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">Security Device by Thales</li>
+                </ul>
+            </section>
+
+            <section class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs space-y-4">
+                <h3 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-4">Key Capabilities</h3>
+                <ul class="space-y-3 text-sm text-slate-600 list-none p-0">
+                    <li class="flex items-start gap-2"><span class="text-blue-600 font-bold">•</span> High availability network and system configuration.</li>
+                    <li class="flex items-start gap-2"><span class="text-blue-600 font-bold">•</span> Resource optimization and hardware health checking.</li>
+                    <li class="flex items-start gap-2"><span class="text-blue-600 font-bold">•</span> Secure and isolated environment setup.</li>
+                </ul>
+            </section>
+        </aside>
+
+    </section>
+</main>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-slate-50 py-10 text-sm text-slate-500 font-semibold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span class="text-base font-bold text-slate-900">Munzir.</span>
+            <p>© 2026 Munzir Tamam. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="https://linkedin.com/in/munzirtamam" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 transition-colors">LinkedIn</a>
+                <a href="https://github.com/MunzirT" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 transition-colors">GitHub</a>
+                <a href="https://instagram.com/hipopotamam" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 transition-colors">Instagram</a>
+                <a href="mailto:munzirt07@gmail.com" class="hover:text-slate-900 transition-colors">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let lastScrollTop = 0;
+        const header = document.getElementById('main-header');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuToggle = document.getElementById('menu-toggle');
+        const nav = document.getElementById('main-nav');
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.scrollY || document.documentElement.scrollTop;
+            if (!mobileMenu.classList.contains('hidden')) return;
+
+            // Efek Sembunyi / Muncul saat Scroll
+            if (scrollTop > lastScrollTop && scrollTop > 80) {
+                header.classList.remove('top-0');
+                header.classList.add('-top-24');
+            } else {
+                header.classList.remove('-top-24');
+                header.classList.add('top-0');
+            }
+
+            // Efek Ramping (Shrink) saat di-scroll ke bawah
+            if (scrollTop > 20) {
+                nav.classList.remove('h-20');
+                nav.classList.add('h-16');
+            } else {
+                nav.classList.remove('h-16');
+                nav.classList.add('h-20');
+            }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        });
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>

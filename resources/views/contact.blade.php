@@ -20,7 +20,7 @@
             <address class="mt-12 not-italic border-t border-slate-200 pt-8 space-y-6 text-lg font-medium text-slate-600">
                 <p class="flex items-center gap-3">
                     <span class="text-blue-600 font-bold" aria-hidden="true">✉️</span>
-                    <a href="mailto:{{ env('PORTFOLIO_EMAIL') }}" class="text-slate-900 font-bold hover:text-blue-600 transition-colors">{{ env('PORTFOLIO_EMAIL') }}</a>
+                    <a href="mailto:munzirt07@gmail.com" class="text-slate-900 font-bold hover:text-blue-600 transition-colors">munzirt07@gmail.com</a>
                 </p>
                 <p class="flex items-center gap-3">
                     <span class="text-blue-600 font-bold" aria-hidden="true">🌐</span>
@@ -30,27 +30,24 @@
 
             <!-- Link Sosial Media Halaman Kontak -->
             <footer class="mt-12 flex gap-6 text-base font-bold text-slate-400">
-                <a href="{{ env('LINKEDIN_URL') }}" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 transition-colors">LinkedIn</a>
-                <a href="{{ env('GITHUB_URL') }}" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 transition-colors">GitHub</a>
-                <a href="{{ env('INSTAGRAM_URL') }}" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 transition-colors">Instagram</a>
+                <a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 transition-colors">LinkedIn</a>
+                <a href="https://github.com/username" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 transition-colors">GitHub</a>
+                <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 transition-colors">Instagram</a>
             </footer>
         </aside>
 
-<!-- SISI KANAN: FORMULIR INTERAKTIF -->
-        <form action="{{ route('contact') }}" method="POST" class="bg-slate-50/60 p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-2xs space-y-8">
-            @csrf
+        <!-- SISI KANAN: FORMULIR STATIS (Menggunakan FormSubmit.co) -->
+        <form action="https://formsubmit.co/munzirt07@gmail.com" method="POST" class="bg-slate-50/60 p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-2xs space-y-8">
             
-            <!-- Alert Notifikasi Sukses Otomatis -->
-            @if(session('success'))
-                <p class="p-4 bg-emerald-50 border border-emerald-200 text-emerald-700 font-bold text-base rounded-xl">
-                    ✅ {{ session('success') }}
-                </p>
-            @endif
-            
+            <!-- FormSubmit Configurations -->
+            <input type="hidden" name="_subject" value="New Inquiry from Portfolio Website!">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+
             <!-- Input Row 1: Name -->
             <p class="flex flex-col space-y-2.5">
                 <label for="name" class="text-base font-bold text-slate-800">Your Name</label>
-                <input type="text" id="name" name="name" required placeholder="John Doc" 
+                <input type="text" id="name" name="name" required placeholder="John Doe" 
                     class="w-full px-5 py-4 bg-white border border-slate-200 rounded-xl text-base font-medium placeholder-slate-400 focus:outline-hidden focus:border-blue-600 focus:ring-4 focus:ring-blue-100 transition-all">
             </p>
 
