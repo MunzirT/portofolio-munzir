@@ -184,7 +184,7 @@
                         <article>
                             <figure class="h-48 bg-slate-900 m-0 relative overflow-hidden">
                                 <img src="{{ asset('images/prtg-1.png') }}" alt="Integrated Monitoring Systems" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500">
-                                <span class="absolute top-4 left-4 px-2.5 py-1 bg-emerald-500 text-white text-[10px] font-bold rounded uppercase tracking-wider shadow-xs">ACTIVE PRODUCTION</span>
+                                <span class="absolute top-4 left-4 px-2.5 py-1 bg-white/90 border border-slate-200 text-[10px] font-bold text-slate-700 rounded uppercase tracking-wider shadow-xs">ACTIVE PRODUCTION</span>
                             </figure>
                             <div class="p-6">
                                 <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors flex items-center justify-between">

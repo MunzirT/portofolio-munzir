@@ -25,80 +25,82 @@
             </p>
         </header>
 
-        <!-- Interactive Image Gallery Slider (Fix Alpine.js & Blade Syntax) -->
+        <!-- Interactive Image Gallery Slider (Full-Width / Single Slide View) -->
         <section x-data="{ 
             active: 0, 
             slides: [
                 { 
                     img: '{{ asset("images/prtg-1.png") }}', 
                     title: 'Main Dashboard KORLANTAS - ERI Korlantas Overview', 
-                    desc: '.' 
+                    desc: 'Monitoring visual tersentralisasi untuk traffic dan ketersediaan node ERI Korlantas.' 
                 },
                 { 
                     img: '{{ asset("images/prtg-2.png") }}', 
                     title: 'PRTG Device Dashboard - ERI Korlantas Overview', 
-                    desc: '.' 
+                    desc: 'Status riil kesehatan server, interface jaringan, dan latensi antar site.' 
                 },
                 { 
                     img: '{{ asset("images/prtg-3.png") }}', 
-                    title: 'Core and Remote Probe Overview - Pressler PRTG Network Monitor', 
-                    desc: '.' 
+                    title: 'Core and Remote Probe Overview - Paessler PRTG Network Monitor', 
+                    desc: 'Topologi infrastruktur Core & Remote Probe untuk menangani ribuan sensor.' 
                 },
                 { 
                     img: '{{ asset("images/grafana-1.png") }}', 
                     title: 'ETLE Site & Network Grafana Monitoring', 
-                    desc: '.' 
+                    desc: 'Visualisasi metrik jaringan dan ketersediaan site ETLE terdistribusi.' 
                 },
                 { 
                     img: '{{ asset("images/grafana-2.png") }}', 
-                    title: 'ETLE Site & Network Grafana Monitoring', 
-                    desc: '.' 
+                    title: 'ETLE Site & Network Grafana Monitoring (System Health)', 
+                    desc: 'Telemetri resource fisik server, CPU, RAM, dan status SSD DWPD.' 
                 }
             ],
             next() { this.active = (this.active + 1) % this.slides.length },
             prev() { this.active = (this.active - 1 + this.slides.length) % this.slides.length }
-        }" class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch mb-16 select-none">
+        }" class="relative mb-16 select-none">
             
-            <!-- Main Active Image Container (Col 8) -->
-            <figure class="md:col-span-8 relative h-[380px] sm:h-[480px] bg-slate-900 rounded-3xl overflow-hidden shadow-sm border border-slate-200/80 group m-0">
+            <!-- Main Full-Width Image Container -->
+            <figure class="relative w-full h-[400px] sm:h-[550px] bg-slate-900 rounded-3xl overflow-hidden shadow-md border border-slate-200/80 m-0">
                 <template x-for="(slide, index) in slides" :key="index">
                     <section x-show="active === index" 
                              x-transition:enter="transition ease-out duration-300 transform"
-                             x-transition:enter-start="opacity-0 scale-95"
+                             x-transition:enter-start="opacity-0 scale-98"
                              x-transition:enter-end="opacity-100 scale-100"
+                             x-transition:leave="transition ease-in duration-200 transform"
+                             x-transition:leave-start="opacity-100 scale-100"
+                             x-transition:leave-end="opacity-0 scale-98"
                              class="absolute inset-0 w-full h-full">
-                        <img :src="slide.img" :alt="slide.title" class="w-full h-full object-cover">
+                        <!-- Menggunakan object-contain agar seluruh gambar terlihat jelas tanpa terpotong -->
+                        <img :src="slide.img" :alt="slide.title" class="w-full h-full object-contain bg-slate-950/80">
+                        
                         <!-- Caption Overlay -->
-                        <figcaption class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent p-6 text-white z-10">
+                        <figcaption class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent p-6 sm:p-8 text-white z-10">
                             <span class="text-xs font-bold uppercase tracking-wider text-blue-400" x-text="`0${index + 1} / 0${slides.length}`"></span>
-                            <h3 class="text-xl font-bold mt-1" x-text="slide.title"></h3>
-                            <p class="text-xs text-slate-300 mt-1 leading-relaxed" x-text="slide.desc"></p>
+                            <h3 class="text-lg sm:text-2xl font-bold mt-1" x-text="slide.title"></h3>
+                            <p class="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed max-w-3xl" x-text="slide.desc"></p>
                         </figcaption>
                     </section>
                 </template>
 
                 <!-- Tombol Navigasi Kiri (Prev) -->
-                <button @click="prev()" aria-label="Previous Slide" class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md flex items-center justify-center font-bold text-lg transition-transform hover:scale-105 cursor-pointer z-20">
+                <button @click="prev()" aria-label="Previous Slide" class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/60 hover:bg-slate-900/90 text-white border border-white/20 shadow-lg flex items-center justify-center font-bold text-xl transition-all hover:scale-110 cursor-pointer z-20 backdrop-blur-xs">
                     &#8249;
                 </button>
-            </figure>
 
-            <!-- Preview Gambar Berikutnya / Tombol Next (Col 4) -->
-            <figure @click="next()" class="hidden md:block md:col-span-4 relative h-[480px] bg-slate-900 rounded-3xl overflow-hidden shadow-sm border border-slate-200/80 cursor-pointer group m-0">
-                <img :src="slides[(active + 1) % slides.length].img" alt="Next preview" class="w-full h-full object-cover opacity-75 group-hover:scale-105 transition-all duration-500">
-                <span class="absolute inset-0 bg-slate-950/30 group-hover:bg-slate-950/10 transition-colors"></span>
-                
-                <!-- Panah Melayang Kanan (Next) -->
-                <button aria-label="Next Slide" class="absolute right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-md flex items-center justify-center font-bold text-lg transition-transform group-hover:scale-110 z-20">
+                <!-- Tombol Navigasi Kanan (Next) -->
+                <button @click="next()" aria-label="Next Slide" class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/60 hover:bg-slate-900/90 text-white border border-white/20 shadow-lg flex items-center justify-center font-bold text-xl transition-all hover:scale-110 cursor-pointer z-20 backdrop-blur-xs">
                     &#8250;
                 </button>
-                
-                <figcaption class="absolute bottom-6 left-6 right-6 z-10">
-                    <span class="px-3 py-1.5 bg-slate-900/80 backdrop-blur-md text-white text-xs font-semibold rounded-lg inline-block mb-2">
-                        Berikutnya &rarr;
-                    </span>
-                    <h4 class="text-sm font-bold text-white line-clamp-1" x-text="slides[(active + 1) % slides.length].title"></h4>
-                </figcaption>
+
+                <!-- Dots Pagination Indicator -->
+                <nav aria-label="Slide dots" class="absolute top-4 right-6 z-20 flex gap-2 bg-slate-900/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                    <template x-for="(slide, index) in slides" :key="index">
+                        <button @click="active = index" 
+                                class="w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer"
+                                :class="active === index ? 'bg-blue-500 w-6' : 'bg-white/40 hover:bg-white/70'">
+                        </button>
+                    </template>
+                </nav>
             </figure>
 
         </section>
