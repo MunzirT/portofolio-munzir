@@ -157,21 +157,25 @@
             </header>
 
             <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 list-none">
-                <!-- Project 1 -->
-                <li class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-2xs flex flex-col justify-between group hover:shadow-md transition-shadow">
-                    <article>
-                        <figure class="h-48 bg-slate-900 m-0 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=600" alt="Server Racks" class="w-full h-full object-cover opacity-70">
-                            <span class="absolute top-4 left-4 px-2.5 py-1 bg-white/90 border border-slate-200 text-[10px] font-bold text-slate-700 rounded uppercase tracking-wider">DEPLOYED</span>
-                        </figure>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Automated Baremetal Clusters</h3>
-                            <p class="mt-2 text-sm text-slate-500 leading-relaxed">Pre-provisioning automation workflows deployment targeting architecture servers via custom PXE configurations.</p>
-                        </div>
-                    </article>
-                    <footer class="p-6 pt-0 border-t border-slate-50 mt-4 flex justify-between items-center text-xs font-bold text-slate-400">
-                        <span>Systems Tech</span> <span class="text-blue-600 text-sm">→</span>
-                    </footer>
+
+                <!-- Project 1: Automated Baremetal Clusters (KSEMA) -->
+                <li class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-2xs group hover:shadow-md transition-shadow">
+                    <a href="{{ route('projects.ksema') }}" class="flex flex-col justify-between h-full">
+                        <article>
+                            <figure class="h-48 bg-slate-900 m-0 relative overflow-hidden">
+                                <img src="{{ asset('images/KSEMA-2.jpg') }}" alt="KSEMA System Architecture" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-4 left-4 px-2.5 py-1 bg-white/90 border border-slate-200 text-[10px] font-bold text-slate-700 rounded uppercase tracking-wider">DEPLOYED</span>
+                            </figure>
+                            <section class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">KSEMA by PT Equnix</h3>
+                                <p class="mt-2 text-sm text-slate-500 leading-relaxed">Responsible for baremetal hardware setup and Thales HSM appliance installation, ensuring full readiness for Post-Quantum cryptographic encryption and KMS services.</p>
+                            </section>
+                        </article>
+                        <footer class="p-6 pt-0 border-t border-slate-50 mt-4 flex justify-between items-center text-xs font-bold text-slate-400">
+                            <span>Systems Tech</span> 
+                            <span class="text-blue-600 font-bold group-hover:translate-x-1 transition-transform flex items-center gap-1">View Case Study &rarr;</span>
+                        </footer>
+                    </a>
                 </li>
 
                 <!-- Project 2: Integrated Monitoring Systems (Dapat diklik menuju route detail) -->
@@ -179,7 +183,7 @@
                     <a href="{{ route('projects.monitoring') }}" class="flex flex-col justify-between h-full">
                         <article>
                             <figure class="h-48 bg-slate-900 m-0 relative overflow-hidden">
-                                <img src="{{ asset('images/prtg-eri.jpg') }}" alt="Integrated Monitoring Systems" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500">
+                                <img src="{{ asset('images/prtg-1.png') }}" alt="Integrated Monitoring Systems" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500">
                                 <span class="absolute top-4 left-4 px-2.5 py-1 bg-emerald-500 text-white text-[10px] font-bold rounded uppercase tracking-wider shadow-xs">ACTIVE PRODUCTION</span>
                             </figure>
                             <div class="p-6">

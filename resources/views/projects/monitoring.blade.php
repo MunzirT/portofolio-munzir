@@ -30,29 +30,29 @@
             active: 0, 
             slides: [
                 { 
-                    img: '{{ asset("images/munzir-photo.jpeg") }}', 
-                    title: 'System Engineer Lead - Munzir Tamam', 
-                    desc: 'Penanggung jawab operasional & implementasi arsitektur jaringan terpadu.' 
+                    img: '{{ asset("images/prtg-1.png") }}', 
+                    title: 'Main Dashboard KORLANTAS - ERI Korlantas Overview', 
+                    desc: '.' 
                 },
                 { 
-                    img: '{{ asset("images/munzir-photo.jpeg") }}', 
-                    title: 'PRTG Core & Probe - ERI Korlantas Overview', 
-                    desc: 'Monitoring lalu lintas jaringan, bandwidth trunk Telkom, dan status node ERI Korlantas.' 
+                    img: '{{ asset("images/prtg-2.png") }}', 
+                    title: 'PRTG Device Dashboard - ERI Korlantas Overview', 
+                    desc: '.' 
                 },
                 { 
-                    img: '{{ asset("images/munzir-photo.jpeg") }}', 
-                    title: 'EAVIS System & Analytics Health Verification', 
-                    desc: 'Telemetri kesehatan hardware, penggunaan resource CPU/RAM, dan verifikasi konektivitas EAVIS.' 
+                    img: '{{ asset("images/prtg-3.png") }}', 
+                    title: 'Core and Remote Probe Overview - Pressler PRTG Network Monitor', 
+                    desc: '.' 
                 },
                 { 
-                    img: '{{ asset("images/munzir-photo.jpeg") }}', 
-                    title: 'ETLE Site & Network Telemetry Control', 
-                    desc: 'Monitoring ketersediaan koneksi, status sensor, dan kontrol perangkat keras site ETLE.' 
+                    img: '{{ asset("images/grafana-1.png") }}', 
+                    title: 'ETLE Site & Network Grafana Monitoring', 
+                    desc: '.' 
                 },
                 { 
-                    img: '{{ asset("images/munzir-photo.jpeg") }}', 
-                    title: 'Grafana Cluster Performance Matrix', 
-                    desc: 'Visualisasi metrik mendalam (Disk I/O, LVM storage, thermal, dan load average) server.' 
+                    img: '{{ asset("images/grafana-2.png") }}', 
+                    title: 'ETLE Site & Network Grafana Monitoring', 
+                    desc: '.' 
                 }
             ],
             next() { this.active = (this.active + 1) % this.slides.length },

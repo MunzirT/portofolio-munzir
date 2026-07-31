@@ -30,6 +30,10 @@ Route::get('/projects/integrated-monitoring', function () {
     return view('projects.monitoring');
 })->name('projects.monitoring');
 
+Route::get('/projects/ksema', function () {
+    return view('projects.ksema');
+})->name('projects.ksema');
+
 // 3. CONTACT FORM PROCESSING ROUTE (POST)
 Route::post('/contact', function (Request $request) {
     // Validasi input form dari user secara ketat
